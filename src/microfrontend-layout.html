@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Micro-Root</title>
+  </head>
+  <body>
+    <!-- <template id="micro-root-layout"> -->
+    <single-spa-router>
+      <!--
+
+    This is the single-spa Layout Definition for your microfrontends.
+    See https://single-spa.js.org/docs/layout-definition/ for more information.
+
+  -->
+
+      <h1>main</h1>
+
+      <!-- Example layouts you might find helpful:
+
+  <nav>
+    <application name="@org/navbar"></application>
+  </nav>
+  <route path="settings">
+    <application name="@org/settings"></application>
+  </route>
+
+  -->
+
+      <main>
+        <route default>
+          <application name="@micro-test/micro-sub-webpack-vue3"></application>
+        </route>
+        <route path="vite2-vue3">
+          <application name="@micro-test/micro-sub-vite2-vue3"></application>
+        </route>
+      </main>
+    </single-spa-router>
+    <!-- </template> -->
+  </body>
+</html>
