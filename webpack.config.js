@@ -1,6 +1,7 @@
 const { merge } = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa-ts');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = 'micro-test';
@@ -24,5 +25,11 @@ module.exports = (webpackConfigEnv, argv) => {
         },
       }),
     ],
+    resolve: {
+      modules: ['node_modules'],
+      alias: {
+        NodeM: path.resolve(__dirname, './node_modules'),
+      },
+    },
   });
 };
