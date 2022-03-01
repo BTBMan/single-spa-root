@@ -13,23 +13,71 @@ module.exports = (webpackConfigEnv, argv) => {
     disableHtmlGeneration: true,
   });
 
-  return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
-    plugins: [
-      new HtmlWebpackPlugin({
-        inject: false,
-        template: 'src/index.ejs',
-        templateParameters: {
-          isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
-          orgName,
+  // return {
+  //   entry: {
+  //     common: './src/common-deps.js',
+  //   },
+  //   output: {
+  //     filename: 'common-deps.js',
+  //     path: path.resolve(__dirname, './dist/[name].js'),
+  //     // libraryTarget: 'umd',
+  //   },
+  //   plugins: [
+  //     new HtmlWebpackPlugin({
+  //       // inject: false,
+  //       inject: true,
+  //       template: 'src/index.ejs',
+  //       templateParameters: {
+  //         isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
+  //         orgName,
+  //       },
+  //     }),
+  //   ],
+  //   resolve: {
+  //     modules: ['node_modules'],
+  //     alias: {
+  //       NodeM: path.resolve(__dirname, './node_modules'),
+  //     },
+  //   },
+  // };
+
+  // console.log(defaultConfig);
+
+  return merge(
+    // {},
+    defaultConfig,
+    {
+      // mode: 'development',
+      entry: {
+        common: './src/common-deps.js',
+      },
+      output: {
+        filename: '[name].js',
+        path: path.resolve(__dirname, './dist'),
+        // path: '',
+        libraryTarget: 'var',
+        library: {
+          name: '[name]',
+          type: 'var',
         },
-      }),
-    ],
-    resolve: {
-      modules: ['node_modules'],
-      alias: {
-        NodeM: path.resolve(__dirname, './node_modules'),
+      },
+      plugins: [
+        new HtmlWebpackPlugin({
+          // inject: false,
+          inject: true,
+          template: 'src/index.ejs',
+          templateParameters: {
+            isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
+            orgName,
+          },
+        }),
+      ],
+      resolve: {
+        modules: ['node_modules'],
+        alias: {
+          NodeM: path.resolve(__dirname, './node_modules'),
+        },
       },
     },
-  });
+  );
 };
