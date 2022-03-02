@@ -1,1 +1,1 @@
-// console.log('common-deps');
+import 'systemjs/dist/system';

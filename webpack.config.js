@@ -44,8 +44,8 @@ module.exports = (webpackConfigEnv, argv) => {
   // console.log(defaultConfig);
 
   return merge(
-    // {},
-    defaultConfig,
+    {},
+    // defaultConfig,
     {
       // mode: 'development',
       entry: {
@@ -55,11 +55,11 @@ module.exports = (webpackConfigEnv, argv) => {
         filename: '[name].js',
         path: path.resolve(__dirname, './dist'),
         // path: '',
-        libraryTarget: 'var',
-        library: {
-          name: '[name]',
-          type: 'var',
-        },
+        // libraryTarget: 'var',
+        // library: {
+        //   name: '[name]',
+        //   type: 'var',
+        // },
       },
       plugins: [
         new HtmlWebpackPlugin({
