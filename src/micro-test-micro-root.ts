@@ -6,17 +6,11 @@ const routes = constructRoutes(microfrontendLayout);
 const applications = constructApplications({
   routes,
   loadApp({ name }) {
-    // console.log(System);
-
-    // console.log();
-
     return System.import(name);
   },
 });
 
 const layoutEngine = constructLayoutEngine({ routes, applications });
-
-// console.log(applications);
 
 applications.forEach(registerApplication);
 layoutEngine.activate();

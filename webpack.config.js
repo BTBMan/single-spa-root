@@ -1,7 +1,7 @@
 const { merge } = require('webpack-merge');
 const singleSpaDefaults = require('webpack-config-single-spa-ts');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
+// const path = require('path');
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = 'micro-test';
@@ -44,23 +44,23 @@ module.exports = (webpackConfigEnv, argv) => {
   // console.log(defaultConfig);
 
   return merge(
-    {},
-    // defaultConfig,
+    // {},
+    defaultConfig,
     {
-      // mode: 'development',
-      entry: {
-        common: './src/common-deps.js',
-      },
-      output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, './dist'),
-        // path: '',
-        // libraryTarget: 'var',
-        // library: {
-        //   name: '[name]',
-        //   type: 'var',
-        // },
-      },
+      // // mode: 'development',
+      // entry: {
+      //   common: './src/common-deps.js',
+      // },
+      // output: {
+      //   filename: '[name].js',
+      //   path: path.resolve(__dirname, './dist'),
+      //   // path: '',
+      //   // libraryTarget: 'var',
+      //   // library: {
+      //   //   name: '[name]',
+      //   //   type: 'var',
+      //   // },
+      // },
       plugins: [
         new HtmlWebpackPlugin({
           // inject: false,
@@ -72,12 +72,12 @@ module.exports = (webpackConfigEnv, argv) => {
           },
         }),
       ],
-      resolve: {
-        modules: ['node_modules'],
-        alias: {
-          NodeM: path.resolve(__dirname, './node_modules'),
-        },
-      },
+      // resolve: {
+      //   modules: ['node_modules'],
+      //   alias: {
+      //     NodeM: path.resolve(__dirname, './node_modules'),
+      //   },
+      // },
     },
   );
 };
